@@ -29,8 +29,14 @@ function getCreatureDescription(card) {
 
 
 
+class Creature extends Card {
+    getDescriptions() {
+        return [getCreatureDescription(this), ...super.getDescriptions()];
+    }
+}
+
 // Основа для утки.
-class Duck extends Card {
+class Duck extends Creature {
     constructor(name = 'Мирная утка', maxPower = 2) {
         super(name, maxPower);
     }
@@ -40,7 +46,7 @@ class Duck extends Card {
 
 
 // Основа для собаки.
-class Dog extends Card {
+class Dog extends Creature {
     constructor(name = 'Пес-бандит', maxPower = 3) {
         super(name, maxPower);
     }
